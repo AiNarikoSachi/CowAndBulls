@@ -65,13 +65,13 @@ public class Game {
     private void CheckInput() {
         Scanner scanner = new Scanner(System.in);
         int[] arr = new int[length];
-        if (length == 1) System.out.println("Введите "+ length + "число через ввод");
+        if (length == 1) System.out.println("Введите "+ length + " число через ввод");
         else {
             if (length > 1 && length <5) {
-                System.out.println("Введите "+ length + "чисел через ввод");
+                System.out.println("Введите "+ length + " чисел через ввод");
             } else {
                 if (length > 4 && length < 11) {
-                    System.out.println("Введите "+ length + "чисел через ввод");
+                    System.out.println("Введите "+ length + " чисел через ввод");
                 }
             }
         }
@@ -137,6 +137,25 @@ public class Game {
         arr[0] = cow;
         arr[1] = bull;
         return arr;
+    }
+
+    public Game() {
+        getMas();
+        boolean win = false;
+        while (win == false) {
+            CheckInput();
+            System.out.println("Введенный массив:");
+            printMas(inputArray);
+            System.out.println();
+            int[] arr = checkCowAndBull();
+            if (arr[1] == length) {
+                win = true;
+                System.out.println("Поздравляю! Вы победили!");
+            } else {
+                System.out.println("В введенно числе " + arr[0] + "коров, " + arr[0] + "быков");
+                System.out.println("Повторите ввод числа");
+            }
+        }
     }
 
 }
