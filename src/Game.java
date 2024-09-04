@@ -68,7 +68,7 @@ public class Game {
         if (length == 1) System.out.println("Введите "+ length + " число через ввод");
         else {
             if (length > 1 && length <5) {
-                System.out.println("Введите "+ length + " чисел через ввод");
+                System.out.println("Введите "+ length + " числа через ввод");
             } else {
                 if (length > 4 && length < 11) {
                     System.out.println("Введите "+ length + " чисел через ввод");
