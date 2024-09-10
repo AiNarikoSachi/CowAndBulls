@@ -104,20 +104,36 @@ public class Number {
     }
 
 
-    private void numberRepitition() {
-        int temp = number;
+    private int[] numberRepitition() {
+        double temp = number;
         for (int i = 0; i < lengthMassiv; i++) {
-            int pow = lengthMassiv + 1 - i;
-            //int j = temp % Math.pow(10, pow);
-            //System.out.println(j);
-            //massiv[i] = j;
+            int pown = lengthMassiv - 1 - i;
+            double j = temp / Math.pow(10, pown);
+            int k = (int) j;
+            temp = temp % Math.pow(10, pown);
+            massiv[i] = k;
+            //System.out.println(massiv[i]);
         }
-        System.out.println(massiv);
+        return massiv;
+    }
+
+    private void numberComparison() {
+        for (int i = 0; i < lengthMassiv-1; i++) {
+            if (massiv[i] == massiv[i+1]) {
+                System.out.println("В введеном числе есть " +
+                      "повторяющиеся цифры, пожалуйста, введите заново");
+                numberScan();
+                numberComparison();
+            } else {
+                System.out.println("Все в порядке!");
+            }
+        }
     }
 
     public Number() {
       numberScan();
       numberRepitition();
+      numberComparison();
       //lengthMas();
       //getMenu();
     }
