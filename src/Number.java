@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Number {
+public class Number  {
     private int lengthMassiv = 7;
     private int number;
     private int[] massiv = new int[lengthMassiv];
@@ -117,22 +117,45 @@ public class Number {
         return massiv;
     }
 
+    private int[] testMassiv(int testMassiv[]) {
+        for (int i = 0; i < lengthMassiv; i++) {
+            testMassiv[i] = (int) (Math.random() * 10);
+            System.out.print(testMassiv[i] + " ");
+        }
+        return testMassiv;
+    }
+
     private void numberComparison() {
-        for (int i = 0; i < lengthMassiv-1; i++) {
-            if (massiv[i] == massiv[i+1]) {
-                System.out.println("В введеном числе есть " +
-                      "повторяющиеся цифры, пожалуйста, введите заново");
-                numberScan();
-                numberComparison();
-            } else {
-                System.out.println("Все в порядке!");
+        int testMassiv[] = new int[lengthMassiv];
+        testMassiv(testMassiv);
+
+        int count = 0;
+        boolean bull = true;
+        for (int i = 0; i < lengthMassiv; i++) {
+            for (int j = 0; j < lengthMassiv; j++) {
+                if (testMassiv[i] == testMassiv[j]) {
+                    if (i != j) {
+                        System.out.println("Повторение чисел");
+                        testMassiv[j] = (int) (Math.random() * 10);
+                        count += 1;
+                        System.out.println(testMassiv[i] + " " + testMassiv[j]);
+
+                    }
+                }
             }
         }
+        for (int i = 0; i < lengthMassiv; i++) {
+            System.out.print(testMassiv[i] + " ");
+        }
+        System.out.println(count);
+    }
+
+    private void readFile() {
     }
 
     public Number() {
-      numberScan();
-      numberRepitition();
+      //numberScan();
+      //numberRepitition();
       numberComparison();
       //lengthMas();
       //getMenu();
