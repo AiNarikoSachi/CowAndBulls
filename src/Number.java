@@ -1,11 +1,15 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.nio.file.Files;
 import java.util.Scanner;
 
 public class Number  {
-    private int lengthMassiv = 7;
+    private int lengthMassiv = 5;
     private int number;
     private int[] massiv = new int[lengthMassiv];
 
-  private int lengthMas() {
+    //Ввод длины числа.
+    private int lengthMas() {
         Scanner scanner = new Scanner(System.in);
         do {
             System.out.print("Введите целое число от 1-ого до 10-ти:");
@@ -16,7 +20,9 @@ public class Number  {
             lengthMassiv = scanner.nextInt();
         } while (lengthMassiv <= 0 || lengthMassiv > 10);
         return lengthMassiv;
-  }
+    }
+
+    //Ввод номера меню.(???)
     private int menuNumber() {
         Scanner scanner = new Scanner(System.in);
         int menuNumber = 0;
@@ -30,6 +36,7 @@ public class Number  {
         return menuNumber;
     }
 
+    //Меню основное.(???)
     private int getMenu() {
       Scanner scanner = new Scanner(System.in);
       System.out.println("Выберите номер операции:" +
@@ -54,6 +61,7 @@ public class Number  {
       }
     }
 
+    //Меню повторов.(???)
     private char getLenght() {
         System.out.println("Вкл./Выкл. повторяющиеся цифры" +
                 "\n1 — Вкл." +
@@ -71,6 +79,7 @@ public class Number  {
         }
     }
 
+    //Меню выбора чтения файлов.(???)
     private char getPrint() {
       System.out.println("Выберите как читать/выводить данные" +
               "\n1 — Консоль" +
@@ -88,6 +97,7 @@ public class Number  {
       }
     }
 
+    //Ввод числа для игры.
     private int numberScan() {
         Scanner scanner = new Scanner(System.in);
         int leni = 0;
@@ -103,7 +113,7 @@ public class Number  {
         return number;
     }
 
-
+    //Разделение числа на цифры.
     private int[] numberRepitition() {
         double temp = number;
         for (int i = 0; i < lengthMassiv; i++) {
@@ -117,48 +127,84 @@ public class Number  {
         return massiv;
     }
 
+    //Загаданный массив от бота.
     private int[] testMassiv(int testMassiv[]) {
         for (int i = 0; i < lengthMassiv; i++) {
             testMassiv[i] = (int) (Math.random() * 10);
-            System.out.print(testMassiv[i] + " ");
+//            System.out.print(testMassiv[i] + " ");
+//            System.out.println();
         }
         return testMassiv;
     }
 
-    private void numberComparison() {
+    //Проверка числа на повторяющиеся числа.
+    private int[] numberComparison() {
         int testMassiv[] = new int[lengthMassiv];
         testMassiv(testMassiv);
 
-        int count = 0;
-        boolean bull = true;
         for (int i = 0; i < lengthMassiv; i++) {
             for (int j = 0; j < lengthMassiv; j++) {
                 if (testMassiv[i] == testMassiv[j]) {
                     if (i != j) {
-                        System.out.println("Повторение чисел");
+                        //System.out.println("Повторение чисел:");
                         testMassiv[j] = (int) (Math.random() * 10);
-                        count += 1;
-                        System.out.println(testMassiv[i] + " " + testMassiv[j]);
-
+                        //System.out.println(testMassiv[i] + " " + testMassiv[j]);
+                        i = 0;
+                        j = 0;
                     }
                 }
             }
         }
-        for (int i = 0; i < lengthMassiv; i++) {
-            System.out.print(testMassiv[i] + " ");
+//        for (int i = 0; i < lengthMassiv; i++) {
+//            System.out.print(testMassiv[i] + " ");
+//        }
+//        System.out.println();
+        return testMassiv;
+    }
+
+    private void cowAndBulls() {
+        //int testMassiv[] = numberComparison();
+        int testMassiv[] = new int[lengthMassiv];
+        testMassiv(testMassiv);
+        int gamerMassiv[] = numberRepitition();
+
+        for (int i: testMassiv) {
+            System.out.print(i + " ");
         }
-        System.out.println(count);
+        System.out.println();
+        for (int i: gamerMassiv) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+        int cow = 0;
+        int bulls = 0;
+        for (int i = 0; i < lengthMassiv; i++) {
+            for (int j = 0; j < lengthMassiv; j++) {
+                if (testMassiv[i] == gamerMassiv[j]) {
+                    cow += 1;
+                    System.out.println(testMassiv[i] + " " + gamerMassiv[j]);
+                }
+                if (i == j) {
+                    if (testMassiv[i] == gamerMassiv[j]) {
+                        bulls += 1;
+                    }
+                }
+            }
+        }
+        System.out.println("Cow: " + cow);
+        System.out.println("Bulls: " + bulls);
     }
 
     private void readFile() {
     }
 
     public Number() {
-      //numberScan();
+      numberScan();
       //numberRepitition();
-      numberComparison();
+      //numberComparison();
       //lengthMas();
       //getMenu();
+        cowAndBulls();
     }
 
 }
