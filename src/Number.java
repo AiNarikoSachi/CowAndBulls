@@ -178,11 +178,20 @@ public class Number  {
         System.out.println();
         int cow = 0;
         int bulls = 0;
+        int figure = 10;
+        int cowMassiv[] = new int[figure];
+        int counter = 0;
+        int testing[] = new int[figure];
         for (int i = 0; i < lengthMassiv; i++) {
             for (int j = 0; j < lengthMassiv; j++) {
-                if (testMassiv[i] == gamerMassiv[j]) {
-                    cow += 1;
-                    System.out.println(testMassiv[i] + " " + gamerMassiv[j]);
+                if (i != j) {
+                    if (testMassiv[i] == gamerMassiv[j]) {
+                        cowMassiv[counter]  = testMassiv[i];
+                        testing[counter] = testMassiv[i];
+                        counter += 1;
+                        cow += 1;
+                        System.out.println(testMassiv[i] + " " + gamerMassiv[j]);
+                    }
                 }
                 if (i == j) {
                     if (testMassiv[i] == gamerMassiv[j]) {
@@ -191,19 +200,24 @@ public class Number  {
                 }
             }
         }
+        for (int i: cowMassiv) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
         System.out.println("Cow: " + cow);
         System.out.println("Bulls: " + bulls);
     }
 
     private void readFile() {
+
     }
 
     public Number() {
-      numberScan();
-      //numberRepitition();
-      //numberComparison();
-      //lengthMas();
-      //getMenu();
+        numberScan();
+        //numberRepitition();
+        //numberComparison();
+        //lengthMas();
+        //getMenu();
         cowAndBulls();
     }
 
