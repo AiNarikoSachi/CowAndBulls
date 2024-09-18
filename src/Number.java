@@ -8,8 +8,23 @@ public class Number  {
     private int number;
     private int[] massiv = new int[lengthMassiv];
 
-    //Ввод длины числа.
-    private int lengthMas() {
+    //Длина числа (сеттер).
+    public void setLengthMassiv(int lengthMassiv) {
+        this.lengthMassiv = lengthMassiv;
+    }
+
+    //Число, введенное пользователем (сеттер).
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    //Массив цифр числа (сетер).
+    public void setMassiv(int[] massiv) {
+        this.massiv = massiv;
+    }
+
+    //Ввод длины числа(геттер).
+    public int getLengthMassiv() {
         Scanner scanner = new Scanner(System.in);
         do {
             System.out.print("Введите целое число от 1-ого до 10-ти:");
@@ -51,7 +66,7 @@ public class Number  {
           case 2:
               return getPrint();
           case 3:
-              return lengthMas();
+              return getLengthMassiv();
           case 4:
               return getLenght();
           default:
@@ -97,8 +112,8 @@ public class Number  {
       }
     }
 
-    //Ввод числа для игры.
-    private int numberScan() {
+    //Ввод числа для игры (геттер).
+    public int numberScan() {
         Scanner scanner = new Scanner(System.in);
         int leni = 0;
         do {
@@ -113,8 +128,8 @@ public class Number  {
         return number;
     }
 
-    //Разделение числа на цифры.
-    private int[] numberRepitition() {
+    //Разделение числа на цифры (геттер).
+    public int[] numberRepitition() {
         double temp = number;
         for (int i = 0; i < lengthMassiv; i++) {
             int pown = lengthMassiv - 1 - i;
@@ -213,12 +228,12 @@ public class Number  {
     }
 
     public Number() {
-        numberScan();
+        //numberScan();
         //numberRepitition();
         //numberComparison();
         //lengthMas();
         //getMenu();
-        cowAndBulls();
+        //cowAndBulls();
     }
 
 }

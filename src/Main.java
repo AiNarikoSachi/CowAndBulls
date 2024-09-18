@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -9,19 +10,27 @@ public class Main {
     public static void main(String[] args) throws Exception {
         //Game game = new Game();
         Number number = new Number();
-//        try (FileReader reader = new FileReader("text.txt")){
-//            int c;
-//            while ((c = reader.read()) !=-1) {
-//                System.out.println((char)c);
-//            }
-//        } catch (IOException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-        BufferedReader reader = new BufferedReader(new FileReader("text.txt"));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            System.out.println(line);
+        ArrayList <Character> readMassiv = new ArrayList<>();
+        try (FileReader reader = new FileReader("text.txt")){
+            int c;
+            char a;
+            while ((c = reader.read()) !=-1) {
+                System.out.print((char)c + " ");
+                a = (char) c;
+                readMassiv.add(a);
+            }
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
-        reader.close();
+        for (Character i: readMassiv) {
+            System.out.println(i);
+        }
+
+//        BufferedReader reader = new BufferedReader(new FileReader("text.txt"));
+//        String line;
+//        while ((line = reader.readLine()) != null) {
+//            System.out.println(line);
+//        }
+//        reader.close();
     }
 }
